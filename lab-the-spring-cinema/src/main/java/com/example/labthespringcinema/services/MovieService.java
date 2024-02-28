@@ -35,14 +35,26 @@ public void deleteMovie(Movie movie){
     movieRepository.delete(movie);
 }
 
-public void updateMovie(Movie movie){
+public void updateMovie(Movie movie, long id){
     movie.setTitle(movie.getTitle());
     movie.setRating(movie.getRating());
     movie.setDuration(movie.getDuration());
-    movie.setId(movie.getId());
+    movie.setId(id);
     movieRepository.save(movie);
 }
 
+//    public List<Movie> filterMoviesByDuration(int maxDuration){
+//        List<Movie> allMovies = movieRepository.findAll();
+//        List<Movie> filteredMovies = new ArrayList<>();
+//
+//        for (Movie movie : allMovies) {
+//            if (movie.getDuration() <= maxDuration){
+//                filteredMovies.add(movie);
+//            }
+//        }
+//
+//        return filteredMovies;
+//    }
 
 
 }

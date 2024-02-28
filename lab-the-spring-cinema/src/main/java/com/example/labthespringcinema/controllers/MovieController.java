@@ -23,6 +23,17 @@ public class MovieController {
        return new ResponseEntity<>(result, HttpStatus.OK);
    }
 
+//    @GetMapping
+//    public ResponseEntity<List<Movie>> getAllMovies(@RequestParam(required = false) Integer maxDuration){
+//        List<Movie> movies;
+//        if (maxDuration == null){
+//            movies = movieService.getAllMovies();
+//        } else {
+//            movies = movieService.filterMoviesByDuration(maxDuration);
+//        }
+//        return new ResponseEntity<>(movies, HttpStatus.OK);
+//    }
+
     @GetMapping(value = "/{id}")
     public ResponseEntity<Optional<Movie>> getMovieById(@PathVariable long id) {
         Optional<Movie> movie = movieService.getMovieById(id);
@@ -45,8 +56,8 @@ public class MovieController {
     }
 
     @PatchMapping(value = "/{id}")
-    public ResponseEntity<Movie> updateMovie(@RequestBody Movie movie){
-       movieService.updateMovie(movie);
+    public ResponseEntity<Movie> updateMovie(@RequestBody Movie movie, @PathVariable long id){
+       movieService.updateMovie(movie, id);
        return new ResponseEntity<>(movie, HttpStatus.OK);
 
 
